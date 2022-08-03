@@ -8,6 +8,9 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip finishSfx;
     [SerializeField] ParticleSystem deathParticle;
     [SerializeField] ParticleSystem winParticle;
+    [SerializeField] GameObject mainBody;
+    [SerializeField] GameObject engineExp;
+
     public bool isTransitioning = false;
     bool collisionDisabled = false;
 
@@ -45,6 +48,8 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<AudioSource>().Stop();
         FindObjectOfType<SideThrust>().GetComponent<AudioSource>().enabled = false;
         GetComponent<AudioSource>().PlayOneShot(deathSfx);
+        Destroy(mainBody,1f);
+        Destroy(engineExp,1f);
         Invoke ("ReloadLevel", levelLoadDelay);
     }
 
