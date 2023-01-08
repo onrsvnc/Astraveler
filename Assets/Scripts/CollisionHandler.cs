@@ -22,6 +22,7 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision other) 
     {
+        Debug.Log("Gadgdag");
         if (isTransitioning || collisionDisabled) {return;}
         
             switch (other.gameObject.tag)
